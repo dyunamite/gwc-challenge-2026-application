@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     musicPreview.src = data.audio_url;
                     musicPreview.load();
 
-                    alert(`Success! Poisoning static inserted at ${formatTime(data.timestamp)}.`);
+                    alert(`Success! Static inserted at ${formatTime(data.timestamp)}.`);
 
                     document.getElementById("musicUploadFull").style.display = "none";
                     document.getElementById("musicDownload").style.display = "flex";

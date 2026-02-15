@@ -2,7 +2,7 @@ run = "python3 main.py"
 modules = ["python-3.11"]
 
 [nix]
-packages = ["libGL", "libGLU"]
+packages = ["ffmpeg-full", "libGL", "libGLU"]
 
 [[ports]]
 localPort = 3000

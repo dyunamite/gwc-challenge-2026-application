@@ -5,6 +5,12 @@ import numpy as np
 from flask import Flask, render_template, request, jsonify
 from PIL import Image, ImageStat
 from pydub import AudioSegment
+import shutil
+
+# Tell Pydub exactly where the Shell installed FFmpeg
+ffmpeg_path = shutil.which("ffmpeg")
+if ffmpeg_path:
+    AudioSegment.converter = ffmpeg_path
 
 app = Flask(__name__)
 
