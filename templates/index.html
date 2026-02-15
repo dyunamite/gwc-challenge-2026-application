@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Art Against AI</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- MENU -->
+  <div id="menu">
+    <header id="header">Art Against AI</header>
+    <div id="menuItems">
+      <button class="nav" id="homeBtn">Home</button>
+      <button class="nav" id="artBtn">Visual Art</button>
+      <button class="nav" id="musicBtn">Music</button> 
+      <button class="nav" id="literatureBtn">Literature</button>
+    </div>
+  </div>
+
+  <!-- SCREEN ONE: HOME -->
+  <section id="homeScreen">
+    <h2>Welcome to Art Against AI!</h2>
+    <p>We aim to help creators protect their work from being used to train AI models.</p>
+    <p>
+      Upload your visual art, music, or writing, and we’ll apply subtle changes that
+      preserve originality while disuading AI ingestion.
+    </p>
+
+    <h2>Our Approach</h2>
+
+    <table id="aboutTable">
+      <tr>
+        <th>Visual Art</th>
+        <th>Music</th>
+        <th>Literature</th>
+      </tr>
+
+      <tr id="homeImgs">
+        <td><img src="static/assets/artExample.png" alt="Art example"></td>
+        <td><img src="static/assets/musicExample.png" alt="Music example"></td>
+        <td><img src="static/assets/literatureExample.png" alt="Literature example"></td>
+      </tr>
+
+      <tr>
+        <td>
+          Our research found that AI models struggle to replicacte continuous, unbroken patterns. Therefore, we use this concept in the form of a watermark to protect your art. We find areas with minimal visual impact and place the watermark there.
+        </td>
+        <td>
+          Our research shows that AI systems rely on clean, consistent patterns to process and learn from audio. By subtly introducing controlled noise at the beginning and end of each track, we disrupt automated ingestion while preserving a seamless listening experience for your audience.
+        </td>
+        <td>
+          Our research shows that AI systems depend on clean, uninterrupted text structures to interpret language accurately. By embedding zero-width characters within morphemes, we subtly disrupt machine parsing while keeping the text visually identical and fully readable to human audiences.
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- SCREEN TWO: ART -->
+  <section id="artScreen">
+    <div class="main" id="mainArt">
+
+      <div id="artUploadFull">
+        <div id="artUploadDesc">
+          <h2>Upload your Visual Art (.png, .jpg, .jpeg)</h2>
+          <p>We’ll identify the best area to place your watermark without interfering with the rest of your work</p>
+        </div>
+
+        <div id="artUploadScreen">
+          <input name="art" type="file" id="uploadArt" accept=".png,.jpg,.jpeg">
+          <button id="uploadArtBtn">UPLOAD</button>
+        </div>
+      </div>
+
+      <div id="artSelect" >
+        <div id="artOptions">
+          <button id="backArt"></button>
+
+          <div class="option-container">
+            <button class="artToggle active" data-index="0">#1</button>
+            <img id="preview1" src="" alt="Preview 1">
+          </div>
+
+          <div class="option-container">
+            <button class="artToggle" data-index="1">#2</button>
+            <img id="preview2" src="" alt="Preview 2">
+          </div>
+
+          <div class="option-container">
+            <button class="artToggle" data-index="2">#3</button>
+            <img id="preview3" src="" alt="Preview 3">
+          </div>
+        </div>
+
+        <div class="downloadArt">
+          <button id="downloadArtBtn">DOWNLOAD</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SCREEN THREE: MUSIC -->
+  <section id="musicScreen">
+    <div class="main">
+
+      <div id="musicUploadFull">
+        <div id="musicUploadDesc">
+          <h2>Upload your Music (.mp3, .mp4, .wav)</h2>
+          <p>We add minimal noise outside the main audio and preserve your music</p>
+        </div>
+
+        <div id="musicUploadScreen">
+          <input type="file" id="uploadMusic" accept=".mp3,.mp4,.wav">
+          <button id="uploadMusicBtn">UPLOAD</button>
+        </div>
+      </div>
+
+      <div id="musicDownload">
+        <button id="backMusic"></button>
+        <audio id="musicPreview" controls></audio>
+        <button id="musicDownloadBtn">DOWNLOAD</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SCREEN FOUR: LITERATURE -->
+  <section id="literatureScreen">
+    <div class="main">
+
+      <div id="literatureUploadFull">
+        <div id="literatureUploadDesc">
+          <h2>Upload your Writing</h2>
+          <p>We'll add invisble markers that'll make your text unreadable to AI but groundbreaking to everyone else</p>
+        </div>
+        <div id="literatureUploadScreen">
+          <textarea id="literatureInput" placeholder="Paste your writing here..."></textarea>
+          <button id="uploadLiteratureBtn">DONE</button>
+        </div>
+      </div>
+
+      <div id="literatureDownload">
+        <button id="backLiterature"></button>
+
+        <div class="results-container">
+          <div class="result-box">
+            <h3>Protected Text (Normal View)</h3>
+            <div id="literatureOutput"></div>
+            <button id="literatureDownloadBtn">COPY</button>
+          </div>
+
+          <div class="result-box debug-box">
+            <h3>Debug View (Visible Markers)</h3>
+            <div id="literatureDebugOutput"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- JS -->
+  <script src="/static/js/script.js" defer></script>
+
+</body>
+</html>

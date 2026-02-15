@@ -1,0 +1,506 @@
+/* --- EVERYTHING BELOW IS YOUR ORIGINAL CODE --- */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/static/assets/background.png"); /* Fixed path */
+  height: 100vh;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 10, 32, 0.45);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+#homeScreen {
+  display: flex;
+  min-height: 90vh;
+  padding: 20px;
+  color: #ede1e6;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  align-items: center;
+  flex-direction: column;
+}
+
+h2 {
+  font-family: 'Pixelify Sans', serif;
+  color: #e69dd2;
+  border-bottom: 2px solid rgba(230, 157, 210, 0.6);
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+  font-size: 32px;
+  text-align: center;
+  margin-top: 0;
+  letter-spacing: 0.5px;
+}
+
+#aboutTable {
+  border-collapse: collapse;
+  color: #ede1e6;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 18px;
+  padding: 40px 48px;
+}
+
+#aboutTable th {
+  font-family: 'Pixelify Sans', serif;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+  color: #f2e9ff;
+  padding-bottom: 22px;
+}
+
+#aboutTable td {
+  color: rgba(237, 225, 230, 0.9);
+  max-width: 360px;
+  padding: 18px 24px;
+  line-height: 1.75;
+}
+
+#aboutTable td p {
+  margin-bottom: 14px;
+}
+
+#aboutTable th:not(:first-child),
+#aboutTable td:not(:first-child) {
+  border-left: 1px solid rgba(242, 233, 255, 0.22);
+  padding-left: 36px;
+}
+
+.nav {
+  margin: 10px;
+  padding: 10px 20px 15px;
+  background-color: #bcc4e5;
+  color: #2b2847;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Gemunu Libre', serif;
+}
+
+#header {
+  font-family: 'Limelight', cursive;
+  color: #f8eae7;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#menu {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  background-color: #00194a;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+#menuItems {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+
+button,
+#uploadArt,
+#uploadMusic,
+#uploadMusicBtn,
+#uploadLiteratureBtn,
+.downloadArt button {
+  background-color: #ede1e6;
+  color: #2b2847;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'JetBrains Mono', serif;
+  border-radius: 150px;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+button:hover,
+#uploadArt:hover,
+#uploadMusic:hover,
+#uploadMusicBtn:hover,
+#uploadLiteratureBtn:hover,
+.downloadArt button:hover {
+  transform: scale(1.05);
+  background-color: #5f5c7a;
+  color: #ffffff;
+}
+
+.artToggle.active {
+  background-color: #e69dd2;
+  color: #ffffff;
+}
+
+#leftArt,
+#rightArt,
+#mainArt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#rightArt {
+  gap: 100px;
+}
+
+#mainArt {
+  justify-content: space-evenly;
+}
+
+.downloadArt button {
+  padding: 50px 60px;
+  border-radius: 50px;
+  font-size: 40px;
+}
+
+#artScreen,
+#musicScreen,
+#literatureScreen {
+  display: none; /* Hide by default so Home Screen shows */
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+#artUploadScreen,
+#musicUploadScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+#artUploadFull,
+#musicUploadFull {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 6vh;
+}
+
+#artUploadDesc,
+#musicUploadDesc,
+#literatureUploadDesc {
+  font-family: 'Inter', sans-serif;
+  color: #ede1e6;
+  font-size: 20px;
+  text-align: center;
+  opacity: 0.85;
+}
+
+#uploadArt,
+#uploadMusic {
+  width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #5f5c7a;
+}
+
+#uploadArt::file-selector-button,
+#uploadMusic::file-selector-button {
+  background-color: #5f5c7a;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+#backArt,
+#backMusic,
+#backLiterature {
+  width: 50px;
+  height: 50px;
+  background-image: url('/static/assets/backIcon.png'); /* Fixed path */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+#backMusic {
+  position: fixed;
+  top: 96px;
+  left: 16px;
+  z-index: 1000;
+}
+
+#musicDownload,
+#literatureDownload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  min-height: 90vh;
+  padding: 20px;
+}
+
+#musicDownload audio {
+  accent-color: #e69dd2;
+}
+
+#literatureUploadFull {
+  padding-top: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#literatureUploadScreen {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#literatureInput {
+  width: 360px;
+  height: 120px;
+  padding: 14px 18px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #2b2847;
+  background-color: #ede1e6;
+  border-radius: 14px;
+  border: none;
+  resize: none;
+}
+
+#artScreen,
+#musicScreen,
+#literatureScreen,
+#artSelect,
+#musicDownload,
+#literatureDownload {
+  display: none;
+}
+
+#literatureDownload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  min-height: 90vh;
+  padding-top: 12vh;
+}
+
+#literatureDownload output {
+  max-width: 1000px;
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  color: #ede1e6;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 14px;
+}
+
+#homeImgs img {
+  width: 100%;
+  border-radius: 12px;
+}
+#artSelect img {
+  width: clamp(140px, 15vw, 260px);
+}
+
+#artOptions {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 5vw, 80px);
+}
+
+#downloadArt {
+  display: flex;
+  justify-content: center;
+  margin-top: 4vh;
+}
+
+#downloadArt button {
+  padding: 32px 48px;
+  font-size: 28px;
+}
+
+#artSelect {
+  display: none; /* Changed to none so it doesn't show before upload */
+  width:100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6vh;
+  padding-top: 12vh;
+}
+
+#backArt {
+  position: fixed;
+  top: 96px;    
+  left: 10px;    
+  width: 50px;
+  height: 50px;
+  background-image: url('/static/assets/backIcon.png'); /* Fixed path */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  z-index: 1000; 
+}
+
+/* --- THE ONLY NEW RULE ADDED --- */
+.artToggle.active + img {
+  border: 4px solid #00ff00 !important;
+  opacity: 1 !important;
+}
+/* Literature Results Layout */
+#literatureDownload {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding-top: 5vh;
+  gap: 30px;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 90%;
+  max-width: 1000px;
+  margin-bottom: 50px;
+}
+
+.result-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.result-box h3 {
+  font-family: 'Pixelify Sans', sans-serif;
+  color: #e69dd2;
+  margin: 0;
+  font-size: 20px;
+}
+
+#literatureOutput, 
+#literatureDebugOutput {
+  width: 100%;
+  min-height: 150px;
+  max-height: 300px;
+  overflow-y: auto;
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  color: #ede1e6;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 25px;
+  border-radius: 18px;
+  border: 1px solid rgba(230, 157, 210, 0.2);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Debug specific styling to make markers pop */
+#literatureDebugOutput {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: #a3aed0;
+  background: rgba(6, 10, 32, 0.8);
+  border-color: #6aedc7;
+}
+
+/* Back button positioning */
+#backLiterature {
+  position: fixed;
+  top: 96px;
+  left: 20px;
+  z-index: 100;
+}
+#literatureDownload {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.result-box {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#literatureOutput, #literatureDebugOutput {
+  min-height: 100px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+/* Debug box specifically */
+.debug-box {
+  border-color: #6aedc7;
+}
+
+#literatureDebugOutput {
+  font-family: 'JetBrains Mono', monospace;
+  color: #6aedc7;
+  font-size: 0.9em;
+}
+
+#literatureDownloadBtn {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background: #eee;
+  color: #333;
+  font-weight: bold;
+}
+/* This makes only the bracketed markers green */
+.marker {
+    color: #6aedc7; /* Your green color */
+    font-weight: bold;
+    background: rgba(106, 237, 199, 0.1); /* Optional: very faint green glow */
+    padding: 0 2px;
+    border-radius: 4px;
+}
+
+/* Ensure the rest of the debug text is the standard light color */
+#literatureDebugOutput {
+    color: #ede1e6; 
+    font-family: 'JetBrains Mono', monospace;
+}
