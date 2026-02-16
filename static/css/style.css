@@ -1,4 +1,3 @@
-/* --- EVERYTHING BELOW IS YOUR ORIGINAL CODE --- */
 html,
 body {
   margin: 0;
@@ -10,7 +9,7 @@ body {
 body {
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("/static/assets/background.png"); /* Fixed path */
+  background-image: url("/static/assets/background.png"); 
   height: 100vh;
 }
 
@@ -177,7 +176,7 @@ button:hover,
 #artScreen,
 #musicScreen,
 #literatureScreen {
-  display: none; /* Hide by default so Home Screen shows */
+  display: none; 
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 80px);
@@ -233,7 +232,7 @@ button:hover,
 #backLiterature {
   width: 50px;
   height: 50px;
-  background-image: url('/static/assets/backIcon.png'); /* Fixed path */
+  background-image: url('/static/assets/backIcon.png'); 
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -342,7 +341,7 @@ button:hover,
 }
 
 #artSelect {
-  display: none; /* Changed to none so it doesn't show before upload */
+  display: none; 
   width:100vw;
   flex-direction: column;
   justify-content: center;
@@ -357,7 +356,7 @@ button:hover,
   left: 10px;    
   width: 50px;
   height: 50px;
-  background-image: url('/static/assets/backIcon.png'); /* Fixed path */
+  background-image: url('/static/assets/backIcon.png'); 
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -421,7 +420,6 @@ button:hover,
   word-wrap: break-word;
 }
 
-/* Debug specific styling to make markers pop */
 #literatureDebugOutput {
   font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
@@ -430,7 +428,6 @@ button:hover,
   border-color: #6aedc7;
 }
 
-/* Back button positioning */
 #backLiterature {
   position: fixed;
   top: 96px;
@@ -470,7 +467,6 @@ button:hover,
   border-radius: 8px;
 }
 
-/* Debug box specifically */
 .debug-box {
   border-color: #6aedc7;
 }
@@ -490,16 +486,14 @@ button:hover,
   color: #333;
   font-weight: bold;
 }
-/* This makes only the bracketed markers green */
 .marker {
-    color: #6aedc7; /* Your green color */
+    color: #6aedc7; 
     font-weight: bold;
-    background: rgba(106, 237, 199, 0.1); /* Optional: very faint green glow */
+    background: rgba(106, 237, 199, 0.1); 
     padding: 0 2px;
     border-radius: 4px;
 }
 
-/* Ensure the rest of the debug text is the standard light color */
 #literatureDebugOutput {
     color: #ede1e6; 
     font-family: 'JetBrains Mono', monospace;
